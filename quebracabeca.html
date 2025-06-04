@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Quebra-Cabeça UniRoboZin</title>
+    <link rel="stylesheet" href="CSS/quebracabeca.css">
+    <link rel="stylesheet" href="CSS/modal.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+<div class="control">
+    <!-- Botões à esquerda -->
+    <div class="botoes-esquerda">
+      <button id="voltarButton"><i class="fas fa-arrow-left"></i></button>
+    </div>
+    
+    <!-- Ícone de relógio -->
+    <div id="tempoRestante">
+      <i class="fas fa-clock"></i> <span id="valorTempo">00:00</span>
+    </div>
+</div>
+    
+<div class="puzzle-container" id="puzzle"></div>
+
+<!-- Modal de Parabéns -->
+  <div id="congrats-modal" class="modal">
+    <div class="modal-content" id="Congrats">
+      <h2>Parabéns!</h2>
+      <p id="congrats-message"></p>
+      <img id="congrats-image" src="IMG/ganhou.png" alt="Celebração">
+      <button id="voltarIndexButton">Início</button>
+    </div>
+  </div>
+
+  <!-- Modal de Game Over -->
+  <div id="game-over-modal" class="modal">
+    <div class="modal-content" id="over">
+      <h2>Game Over!</h2>
+      <p id="game-over-message"></p>
+      <img id="game-over-image" src="IMG/perdeu.png" alt="Perda">
+      <button id="voltarIndexButtonOver">Início</button>
+    </div>
+  </div>
+
+<script src="JS/puzzle.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+@font-face {
+    font-family: 'Jersey';
+    src: url('../FONTS/Jersey20-Regular.ttf') format('truetype');
+}
+
+:root {
+  --cor-roxo-principal: #583BCE;
+  --cor-azul-escuro: #112A51;
+  --cor-preto: #191919;
+  --cor-amarelo: #EAA918;
+  --cor-roxo-claro: #7976FF;
+  --cor-azul-ciano: #0BBBEF;
+  --cor-cinza: #737171;
+  --cor-branco: #FAFAFA;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--cor-azul-ciano);
+  margin: 0;
+  font-family: 'Jersey', sans-serif;
+}
+
+#initial-container {
+  text-align: center;
+  color: var(--cor-branco);
+}
+
+#initial-container h2 {
+  padding: 2vh 5vw; /* espaçamento envolta da palavra vh:altura e vw: largura*/
+  font-size: 2vw; /* Tamanho da palavra - vw já está se adaptando à largura da tela*/
+  font-weight: 500; /* Expessura da letra */
+}
+
+#initial-container img {
+  width: 40vw;
+  height: auto;
+}
+
+#initial-container button {
+    font-family: 'Jersey', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5vw;
+    padding: 2vh 2vw;
+    color: var(--cor-branco);
+    background-color: var(--cor-azul-escuro);
+    border: 4px solid --cor-preto;
+    box-shadow: 0 4px 0 #000, 0 8px 0 #333;
+    border-radius: 0;
+    cursor: pointer;
+    image-rendering: pixelated; /* aqui o navegador força o estilo pixel */
+}
+
+#initial-container button:hover {
+  box-shadow: 0 2px 0 #000, 0 4px 0 #333;
+  transform: translateY(2px);
+}
+
+#displayInstruction {
+  position: absolute;
+  font-size: 1.5vw;
+  border-radius: 10px;
+  display: none;
+  width: 60%;
+  background-color: var(--cor-azul-escuro);
+  color: var(--cor-branco);
+  padding: 5%;
+}
+
+#displayInstruction h3{
+  text-transform: uppercase;
+}
+
+#displayInstruction p {
+  font-family: 'Poppins', sans-serif;
+}
+
+#closeInstruction {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--cor-azul-ciano);
+  color: var(--cor-branco);
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+}
+
+#closeInstruction:hover {
+  background-color: var(--cor-azul-escuro);
+}
+
+
+
+@media (max-width: 720px) {
+  #initial-container h2 {
+    font-size: 5vw; /* aumenta um pouco em telas bem pequenas */
+    padding: 1vh 2vw; 
+  }
+
+  #initial-container img {
+    width: 65vw;
+    height: auto;
+  }
+
+  #initial-container button {
+    font-size: 4.5vw;
+    padding: 1vh 4vw;
+    border: 1px solid #000;
+    box-shadow: 0 6px 0 #000, 0 8px 0 #333;
+  }
+
+  #displayInstruction {
+    font-size: 3.5vw;
+  }
+
+  #displayInstruction h3{
+    font-size: 5.5vw;
+  }
+}
