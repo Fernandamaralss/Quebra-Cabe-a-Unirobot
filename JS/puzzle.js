@@ -178,7 +178,10 @@ document.getElementById("voltarButton").addEventListener('click', voltarParaInic
 document.getElementById("voltarIndexButton").addEventListener('click', voltarParaInicio);
 document.getElementById("voltarIndexButtonOver").addEventListener('click', voltarParaInicio);
 
-// Inicia o jogo ao carregar a página
-window.addEventListener('load', () => {
-    inicializarQuebraCabeca();
+// Inicia o jogo após o DOM estar carregado e o layout calculado
+window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        inicializarQuebraCabeca();
+    }, 50);
 });
+
