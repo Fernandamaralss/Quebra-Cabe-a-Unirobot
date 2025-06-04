@@ -35,7 +35,6 @@ body {
   box-sizing: border-box;
 }
 
-
 .botoes-esquerda button{
   background: none;
   border: none;
@@ -57,15 +56,11 @@ body {
     height: 450px;
     display: flex;
     flex-wrap: wrap;
-    border: 4px solid #EAA918;
+    border: 4px solid var(--cor-amarelo);
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .piece {
-    width: 150px;
-    height: 150px;
-    background-image: url("../IMG/Unirobozin.svg");
-    background-size: 450px 450px;
     cursor: grab;
 }
 
@@ -74,7 +69,6 @@ body {
     transform: scale(1.05);
 }
 
-
 @media screen and (max-width: 720px) {
 
   .control {
@@ -82,23 +76,17 @@ body {
   }
 
   .botoes-esquerda button {
-    font-size: 7vh; /* aumenta o botão de voltar */
+    font-size: 7vh;
   }
 
   #tempoRestante {
-    font-size: 6vh; /* aumenta o cronômetro */
+    font-size: 6vh;
   }
 
   .puzzle-container {
-    width: 90vw; /* agora ocupa 90% da largura da tela */
-    height: 90vw; /* mantém ele quadrado */
-    max-width: 450px; /* limita para não estourar em telas maiores */
+    width: 90vw;
+    height: 90vw;
+    max-width: 450px;
     max-height: 450px;
-  }
-
-  .piece {
-    width: calc(90vw / 3); /* divide dinamicamente por 3 colunas */
-    height: calc(90vw / 3);
-    background-size: 90vw 90vw; /* adapta o background */
   }
 }
