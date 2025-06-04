@@ -64,7 +64,7 @@ body {
 .piece {
     width: 150px;
     height: 150px;
-    background-image: url("Unirobozin.svg");
+    background-image: url("../IMG/Unirobozin.svg");
     background-size: 450px 450px;
     cursor: grab;
 }

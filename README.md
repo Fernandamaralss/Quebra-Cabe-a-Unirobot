@@ -1,4 +1,3 @@
-````markdown
 # 🧩 Quebra-Cabeça UniRobot
 
 Este é um projeto web interativo desenvolvido com HTML5, CSS3 e JavaScript puro. O objetivo do jogo é montar um quebra-cabeça do mascote Unirobozin no tempo limite de 15 segundos.
