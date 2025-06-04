@@ -73,3 +73,32 @@ body {
     cursor: grabbing;
     transform: scale(1.05);
 }
+
+
+@media screen and (max-width: 720px) {
+
+  .control {
+    padding: 20px;
+  }
+
+  .botoes-esquerda button {
+    font-size: 7vh; /* aumenta o botão de voltar */
+  }
+
+  #tempoRestante {
+    font-size: 6vh; /* aumenta o cronômetro */
+  }
+
+  .puzzle-container {
+    width: 90vw; /* agora ocupa 90% da largura da tela */
+    height: 90vw; /* mantém ele quadrado */
+    max-width: 450px; /* limita para não estourar em telas maiores */
+    max-height: 450px;
+  }
+
+  .piece {
+    width: calc(90vw / 3); /* divide dinamicamente por 3 colunas */
+    height: calc(90vw / 3);
+    background-size: 90vw 90vw; /* adapta o background */
+  }
+}

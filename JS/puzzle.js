@@ -8,6 +8,7 @@ let tempoRestante = 15;
 let intervalo = null;
 let dragged = null;
 let jogoIniciado = false;
+let touchDragged = null;
 
 // Formatar tempo
 const formatarTempo = (segundos) => {
@@ -71,11 +72,19 @@ const inicializarQuebraCabeca = () => {
     puzzle.style.pointerEvents = 'auto';
     iniciarTempo();
 
+    const puzzleSize = puzzle.clientWidth;
+    const pieceSize = Math.floor(puzzleSize / 3);
+    const backgroundSize = pieceSize * 3;
+
     for (let row = 0; row < 3; row++) {
         for (let col = 0; col < 3; col++) {
             const piece = document.createElement("div");
             piece.className = "piece";
-            piece.style.backgroundPosition = `-${col * 150}px -${row * 150}px`;
+            piece.style.width = `${pieceSize}px`;
+            piece.style.height = `${pieceSize}px`;
+            piece.style.backgroundImage = "url('../IMG/Unirobozin.svg')";
+            piece.style.backgroundSize = `${backgroundSize}px ${backgroundSize}px`;
+            piece.style.backgroundPosition = `-${col * pieceSize}px -${row * pieceSize}px`;
             piece.dataset.order = row * 3 + col;
             puzzle.appendChild(piece);
         }
@@ -88,12 +97,32 @@ const inicializarQuebraCabeca = () => {
     configurarDragAndDrop();
 };
 
-// Drag and Drop
+
+// Função de troca genérica
+const trocarPecas = (peca1, peca2) => {
+    const index1 = [...puzzle.children].indexOf(peca1);
+    const index2 = [...puzzle.children].indexOf(peca2);
+    if (index1 < index2) {
+        puzzle.insertBefore(peca2, peca1);
+        puzzle.insertBefore(peca1, puzzle.children[index2]);
+    } else {
+        puzzle.insertBefore(peca1, peca2);
+        puzzle.insertBefore(peca2, puzzle.children[index1]);
+    }
+};
+
+// Configuração de drag para mouse + touch
 const configurarDragAndDrop = () => {
     document.querySelectorAll(".piece").forEach(piece => {
         piece.draggable = true;
+
+        // Eventos de touch
+        piece.addEventListener("touchstart", touchStartHandler);
+        piece.addEventListener("touchmove", touchMoveHandler);
+        piece.addEventListener("touchend", touchEndHandler);
     });
 
+    // Eventos para mouse
     puzzle.addEventListener("dragstart", e => {
         dragged = e.target;
     });
@@ -105,23 +134,46 @@ const configurarDragAndDrop = () => {
     puzzle.addEventListener("drop", e => {
         e.preventDefault();
         if (e.target.className === "piece" && e.target !== dragged) {
-            const draggedIndex = [...puzzle.children].indexOf(dragged);
-            const targetIndex = [...puzzle.children].indexOf(e.target);
-            puzzle.insertBefore(dragged, puzzle.children[targetIndex]);
-            puzzle.insertBefore(e.target, puzzle.children[draggedIndex]);
-
+            trocarPecas(dragged, e.target);
             verificarConclusao();
         }
     });
 };
 
+// Eventos touch
+const touchStartHandler = (e) => {
+    touchDragged = e.target;
+    e.target.style.zIndex = 1000;
+};
+
+const touchMoveHandler = (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    touchDragged.style.position = 'absolute';
+    touchDragged.style.left = `${touch.clientX - touchDragged.offsetWidth / 2}px`;
+    touchDragged.style.top = `${touch.clientY - touchDragged.offsetHeight / 2}px`;
+};
+
+const touchEndHandler = (e) => {
+    touchDragged.style.position = 'static';
+    touchDragged.style.zIndex = 'auto';
+
+    const touch = e.changedTouches[0];
+    const target = document.elementFromPoint(touch.clientX, touch.clientY);
+
+    if (target && target.className === "piece" && target !== touchDragged) {
+        trocarPecas(touchDragged, target);
+        verificarConclusao();
+    }
+    touchDragged = null;
+};
+
 // Reiniciar (usado nos botões dos modais)
 const voltarParaInicio = () => {
-    // Aqui você pode redirecionar para a página inicial
     window.location.href = 'index.html';
 };
 
-// Adiciona eventos nos botões
+// Eventos dos botões
 document.getElementById("voltarButton").addEventListener('click', voltarParaInicio);
 document.getElementById("voltarIndexButton").addEventListener('click', voltarParaInicio);
 document.getElementById("voltarIndexButtonOver").addEventListener('click', voltarParaInicio);
