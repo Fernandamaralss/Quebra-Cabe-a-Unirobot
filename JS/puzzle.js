@@ -84,7 +84,7 @@ const inicializarQuebraCabeca = () => {
             piece.className = "piece";
             piece.style.width = `${pieceSize}px`;
             piece.style.height = `${pieceSize}px`;
-            piece.style.backgroundImage = "url('IMG/Unirobozin.svg')";
+            piece.style.backgroundImage = "url('IMG/Unirobozin.svg?v=1')";
             piece.style.backgroundSize = `${backgroundSize}px ${backgroundSize}px`;
             piece.style.backgroundPosition = `-${col * pieceSize}px -${row * pieceSize}px`;
             piece.dataset.order = row * 3 + col;
