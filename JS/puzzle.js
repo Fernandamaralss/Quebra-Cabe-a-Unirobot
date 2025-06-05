@@ -4,6 +4,7 @@ const congratsMessage = document.getElementById('congrats-message');
 const gameOverModal = document.getElementById('game-over-modal');
 const gameOverMessage = document.getElementById('game-over-message');
 
+
 let tempoRestante = 15;
 let intervalo = null;
 let dragged = null;
@@ -72,6 +73,7 @@ const inicializarQuebraCabeca = () => {
     puzzle.style.pointerEvents = 'auto';
     iniciarTempo();
 
+    // 🚩 Ajuste dinâmico real
     const puzzleSize = puzzle.clientWidth;
     const pieceSize = Math.floor(puzzleSize / 3);
     const backgroundSize = pieceSize * 3;
@@ -89,6 +91,7 @@ const inicializarQuebraCabeca = () => {
             puzzle.appendChild(piece);
         }
     }
+
 
     [...puzzle.children]
         .sort(() => Math.random() - 0.5)
